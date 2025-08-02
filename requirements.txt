@@ -1,0 +1,11 @@
+Django>=4.2
+gunicorn
+psycopg2-binary
+python-dotenv
+whitenoise
+django-environ
+djangorestframework
+djangorestframework_simplejwt
+django-cors-headers
+django-cors-headers
+django-cors-headers
