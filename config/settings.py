@@ -12,10 +12,16 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 import os
 from pathlib import Path
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
+# Load environment before any other imports
+load_dotenv(BASE_DIR / '.env')  
+
+SECRET_KEY = os.environ['SECRET_KEY'] 
 
 
 # Quick-start development settings - unsuitable for production
@@ -178,4 +184,15 @@ REST_AUTH = {
     'JWT_AUTH_COOKIE': 'family-center-auth',
     'JWT_AUTH_REFRESH_COOKIE': 'family-center-refresh-token',
     'REGISTER_SERIALIZER': 'apps.authentication.serializers.UserRegistrationSerializer',
+}
+
+
+MPESA_CONFIG = {
+    'CONSUMER_KEY': os.getenv('MPESA_CONSUMER_KEY'),
+    'CONSUMER_SECRET': os.getenv('MPESA_CONSUMER_SECRET'),
+    'HOST_NAME': 'sandbox.safaricom.co.ke',  
+    'PASS_KEY': os.getenv('MPESA_PASSKEY', 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78'),  # Sandbox default passkey
+    'SHORT_CODE': os.getenv('MPESA_SHORTCODE'),
+    'CALLBACK_URL': os.getenv('MPESA_CALLBACK_URL'),
+    'ACCOUNT_TYPE': 'CustomerPayBillOnline'  
 }

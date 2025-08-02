@@ -11,6 +11,11 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends gcc libpq-dev postgresql-client && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 # Set work directory
 WORKDIR /app
 
@@ -24,5 +29,8 @@ COPY . .
 
 # Collect static files
 RUN python manage.py collectstatic --no-input
+
+RUN python manage.py collectstatic --no-input --clear
+
 
 EXPOSE 8000

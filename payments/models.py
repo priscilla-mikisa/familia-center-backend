@@ -15,8 +15,6 @@ class Payment(models.Model):
     )
     
     PAYMENT_METHODS = (
-        ('stripe', 'Stripe'),
-        ('paypal', 'PayPal'),
         ('mpesa', 'M-Pesa'),
     )
     
@@ -28,7 +26,6 @@ class Payment(models.Model):
     status = models.CharField(max_length=20, choices=PAYMENT_STATUS, default='pending')
     created_at = models.DateTimeField(auto_now_add=True)
     
-    # Optional references
     program = models.ForeignKey(Program, on_delete=models.SET_NULL, null=True, blank=True)
     session = models.ForeignKey(Session, on_delete=models.SET_NULL, null=True, blank=True)
     
