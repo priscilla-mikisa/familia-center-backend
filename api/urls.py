@@ -7,7 +7,10 @@ from .views.program_views import (
 from .views.session_views import (
     SessionListView, SessionDetailView, 
     BookingView, FeedbackView
+    
 )
+from .views import SignUpView
+
 
 urlpatterns = [
     # User endpoints
@@ -26,4 +29,7 @@ urlpatterns = [
     path('sessions/<int:id>/', SessionDetailView.as_view(), name='session-detail'),
     path('sessions/<int:session_id>/book/', BookingView.as_view(), name='session-book'),
     path('sessions/<int:session_id>/feedback/', FeedbackView.as_view(), name='session-feedback'),
+    
+    path('auth/signup/', SignUpView.as_view(), name='signup'),
+
 ]

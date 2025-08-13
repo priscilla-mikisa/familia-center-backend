@@ -1,4 +1,3 @@
-
 services:
   web:
     build: .
@@ -24,6 +23,7 @@ services:
     image: postgres:15
     volumes:
       - postgres_data:/var/lib/postgresql/data/
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     env_file:
       - .env
     environment:

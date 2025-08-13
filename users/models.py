@@ -1,37 +1,3 @@
-# from django.db import models
-
-# # Create your models here.
-# from django.db import models
-# from django.contrib.auth.models import AbstractUser
-
-# class CustomUser(AbstractUser):
-#     USER_TYPES = (
-#         ('client', 'Client'),
-#         ('couple', 'Couple'),
-#         ('counselor', 'Counselor'),
-#         ('admin', 'Administrator'),
-#     )
-    
-#     user_type = models.CharField(max_length=20, choices=USER_TYPES, default='client')
-#     phone = models.CharField(max_length=20, blank=True)
-#     is_anonymous = models.BooleanField(default=False)
-#     alias = models.CharField(max_length=100, blank=True)  # For anonymous users
-#     subscription_status = models.CharField(max_length=20, default='inactive')
-#     created_at = models.DateTimeField(auto_now_add=True)
-    
-#     def __str__(self):
-#         return f"{self.username} ({self.get_user_type_display()})"
-
-# class UserProfile(models.Model):
-#     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name='profile')
-#     bio = models.TextField(blank=True)
-#     specialization = models.CharField(max_length=100, blank=True)  # For counselors
-#     profile_picture = models.URLField(blank=True)
-#     topics = models.JSONField(default=list)  # ['Parenting', 'Marriage', etc.]
-    
-#     def __str__(self):
-#         return f"Profile of {self.user.username}"
-
 from django.db import models
 from django.contrib.auth.models import AbstractUser, Group, Permission
 
